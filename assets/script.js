@@ -14,9 +14,42 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-  //Prompt user for pass length
-  let passLength = prompt("Please enter a number between 8 and 128 for password length.");
-  
+  var passLength;
+  var valid = false;
+  //Loop until user enters a valid password length
+  while(!valid){
+    //Prompt for input
+    var input = prompt("Please enter a number between 8 and 128 for password length.");
+    //Validate input is a number
+    var numberChars = 0;
+    //Loop through input string
+    for(let i=0; i<input.length; i++){
+      //Select the i-th character
+      let char = input[i];
+      //Parse the i-th character
+      let parsedChar = parseInt(char);
+      if(!(Number.isNaN(parsedChar))){
+        numberChars++;
+        //If all characters were numbers, password length is a number.
+        if(numberChars === input.length){
+          //If parsed input is between 8 and 128, password length is valid.
+          let parsedInput = parseInt(input);
+          if((parsedInput >= 8)&&(parsedInput <= 128)){
+            valid = true;
+            break;
+          }
+          else{
+            alert("Error: Not in range.")
+          }
+        }
+      }
+      //If any character was not a number (NaN), prompt again.
+      else{
+        alert("Error: Not a number.")
+        break;
+      }
+    }
+  } 
   //Return password
   return "0";
 }
