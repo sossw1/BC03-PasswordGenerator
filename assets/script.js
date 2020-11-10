@@ -14,7 +14,11 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-
+  //Prompt user for pass length
+  let passLength = prompt("Please enter a number between 8 and 128 for password length.");
+  
+  //Return password
+  return "0";
 }
 
 /*  FUNCTION PLAN
