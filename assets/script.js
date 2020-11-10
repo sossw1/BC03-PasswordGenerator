@@ -39,13 +39,13 @@ function generatePassword(){
             break;
           }
           else{
-            alert("Error: Not in range.")
+            alert("Error: Not in range.");
           }
         }
       }
       //If any character was not a number (NaN), prompt again.
       else{
-        alert("Error: Not a number.")
+        alert("Error: Not a number.");
         break;
       }
     }
