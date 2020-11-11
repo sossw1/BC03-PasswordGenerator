@@ -14,44 +14,48 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-  var passLength;
-  var valid = false;
+  var passLength = getPassLength();
+  alert(passLength);
+}
+
+function getPassLength(){
+  let len;
+  let valid = false;
   //Loop until user enters a valid password length
   while(!valid){
-    //Prompt for input
-    var input = prompt("Please enter a number between 8 and 128 for password length.");
-    //Validate input is a number
-    var numberChars = 0;
-    //Loop through input string
+    //Prompt for input.
+    let input = prompt("Please enter a number between 8 and 128 for password length.");
+    //Validate each char of input string is a number.
+    let validCharCount = 0;
     for(let i=0; i<input.length; i++){
-      //Select the i-th character
       let char = input[i];
-      //Parse the i-th character
+      //Parse i-th character to integer.
       let parsedChar = parseInt(char);
       if(!(Number.isNaN(parsedChar))){
-        numberChars++;
-        //If all characters were numbers, password length is a number.
-        if(numberChars === input.length){
+        validCharCount++;
+        //Check if all chars were valid using total.
+        if(validCharCount === input.length){
           //If parsed input is between 8 and 128, password length is valid.
           let parsedInput = parseInt(input);
           if((parsedInput >= 8)&&(parsedInput <= 128)){
             valid = true;
+            len = parsedInput;
+            alert(len);
             break;
           }
+          //If value not between 8 and 128, start over.
           else{
             alert("Error: Not in range.");
           }
         }
       }
-      //If any character was not a number (NaN), prompt again.
+      //If any character was not a number (NaN), start over.
       else{
         alert("Error: Not a number.");
         break;
       }
     }
   } 
-  //Return password
-  return "0";
 }
 
 /*  FUNCTION PLAN
