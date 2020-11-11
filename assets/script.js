@@ -14,12 +14,11 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-  var passLength = getPassLength();
-  alert(passLength);
+  let password = getPassLength();
+  return password;
 }
 
 function getPassLength(){
-  let len;
   let valid = false;
   //Loop until user enters a valid password length
   while(!valid){
@@ -28,20 +27,16 @@ function getPassLength(){
     //Validate each char of input string is a number.
     let validCharCount = 0;
     for(let i=0; i<input.length; i++){
-      let char = input[i];
-      //Parse i-th character to integer.
-      let parsedChar = parseInt(char);
+      //Parse i-th character to an integer.
+      let parsedChar = parseInt(input[i]);
+      //Test for NaN (not a number) characters.
       if(!(Number.isNaN(parsedChar))){
         validCharCount++;
-        //Check if all chars were valid using total.
         if(validCharCount === input.length){
           //If parsed input is between 8 and 128, password length is valid.
-          let parsedInput = parseInt(input);
+          var parsedInput = parseInt(input);
           if((parsedInput >= 8)&&(parsedInput <= 128)){
-            valid = true;
-            len = parsedInput;
-            alert(len);
-            break;
+            return parsedInput;
           }
           //If value not between 8 and 128, start over.
           else{
@@ -49,7 +44,7 @@ function getPassLength(){
           }
         }
       }
-      //If any character was not a number (NaN), start over.
+      //If any character was NaN, start over.
       else{
         alert("Error: Not a number.");
         break;
