@@ -13,11 +13,6 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-function generatePassword(){
-  alert(getPassLength());
-  alert(getCharTypes());
-}
-
 function getPassLength(){
   let validLength = false;
   //Loop until user enters a valid password length
@@ -69,6 +64,12 @@ function getCharTypes(){
       return charTypeSelection;
     }
   }
+}
+
+function generatePassword(){
+  let pass = "";
+  let passwordLength = getPassLength();
+  let charTypes = getCharTypes();
 }
 
 /*  FUNCTION PLAN
