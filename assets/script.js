@@ -19,6 +19,11 @@ function getPassLength(){
   while(!validLength){
     //Prompt for input.
     let input = prompt("Please enter a number between 8 and 128 for password length.");
+    //Restart if user did not input anything
+    if(input === ""){
+      alert("Error: No input")
+      continue;
+    }
     //Validate each char of input string is a number.
     let validCharCount = 0;
     for(let i=0; i<input.length; i++){
@@ -35,13 +40,13 @@ function getPassLength(){
           }
           //If value not between 8 and 128, start over.
           else{
-            alert("Error: Not in range.");
+            alert("Error: Not in range");
           }
         }
       }
       //If any character was NaN, start over.
       else{
-        alert("Error: Not a number.");
+        alert("Error: Not a number");
         break;
       }
     }
