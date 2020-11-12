@@ -82,9 +82,21 @@ function getChars(){
 }
 
 function generatePassword(){
+  //Placeholder password (empty)
   let pass = "";
+  //Get the user's desired password length
   let passwordLength = getPassLength();
+  //Get the user's desired character types and number of possibilities
   let possibleChars = getChars();
+  let numPossibleChars = possibleChars.length;
+  //Loop through each character in the password
+  for(let i=0; i<passwordLength; i++){
+    //Generate a random index between 0 and number of possible characters
+    let rand = Math.floor(Math.random()*numPossibleChars);
+    let randomChar = possibleChars.charAt(rand);
+    pass = pass + randomChar;
+  }
+  return pass;
 }
 
 /*  FUNCTION PLAN
