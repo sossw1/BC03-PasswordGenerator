@@ -17,9 +17,8 @@ generateBtn.addEventListener("click", writePassword);
 
 //
 function getPassLength(){
-  let validLength = false;
   // Loop until user enters a valid password length
-  while(!validLength){
+  while(true){
     // Prompt for input.
     let input = prompt("Please enter a number between 8 and 128 for password length.");
     // Restart if user did not input anything
