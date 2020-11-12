@@ -85,6 +85,7 @@ function getChars(){
     });
     // If string is non-empty, return it
     if(charTypeSelection.length !== 0){return charTypeSelection;}
+    else{alert("Error: No character types selected.")}
   }
 }
 
@@ -103,6 +104,7 @@ function generatePassword(){
     let randomChar = possibleChars.charAt(rand);
     pass = pass + randomChar;
   }
+  alert("Your password has been generated.")
   return pass;
 }
 
