@@ -14,8 +14,8 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 function generatePassword(){
-  let password = getPassLength();
-  return password;
+  alert(getPassLength());
+  alert(getCharTypes());
 }
 
 function getPassLength(){
@@ -53,16 +53,31 @@ function getPassLength(){
   } 
 }
 
+function getCharTypes(){
+  let charType = ["lowercase","uppercase","numeric","special"];
+  let charTypeSelection = [];
+  charType.forEach(element => {
+    let include = confirm(`Would you like your password to include ${element} characters?`);
+    if(include){charTypeSelection.push(element)};
+  });
+  if(charTypeSelection.length === 0){
+    return 1;
+  }
+  else {
+    return 0;
+  }
+}
+
 /*  FUNCTION PLAN
 
     password length:
-    1.  prompt user for password length between 8 and 128 (switch)
+    1.  prompt user for password length between 8 and 128
     2.  validate:
             input type === number
             min 8, max 128
 
     character types:
-    1.  prompt user for each character type (switch)
+    1.  prompt user for each character type
         1.  prompt user if include "x" type
         2.  validate
     2.  Check if user selected at least one type (char types: lower, upper, numeric, special)
