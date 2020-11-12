@@ -19,9 +19,9 @@ function generatePassword(){
 }
 
 function getPassLength(){
-  let valid = false;
+  let validLength = false;
   //Loop until user enters a valid password length
-  while(!valid){
+  while(!validLength){
     //Prompt for input.
     let input = prompt("Please enter a number between 8 and 128 for password length.");
     //Validate each char of input string is a number.
@@ -54,17 +54,20 @@ function getPassLength(){
 }
 
 function getCharTypes(){
+  let validCharTypes = false;
   let charType = ["lowercase","uppercase","numeric","special"];
   let charTypeSelection = [];
-  charType.forEach(element => {
-    let include = confirm(`Would you like your password to include ${element} characters?`);
-    if(include){charTypeSelection.push(element)};
-  });
-  if(charTypeSelection.length === 0){
-    return 1;
-  }
-  else {
-    return 0;
+  //Loop until user selects at least one character type
+  while(!validCharTypes){
+    charType.forEach(element => {
+      let include = confirm(`Would you like your password to include ${element} characters? Click 'OK' to include, 'Cancel' otherwise.`);
+      //If including character type, append it to array of selected types.
+      if(include){charTypeSelection.push(element)};
+    });
+    if(charTypeSelection.length !== 0){
+      //Return the array of selections
+      return charTypeSelection;
+    }
   }
 }
 
