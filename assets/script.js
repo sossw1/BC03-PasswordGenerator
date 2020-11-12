@@ -49,20 +49,27 @@ function getPassLength(){
 }
 
 function getChars(){
-  let validCharTypes = false;
-  let charType = ["lowercase","uppercase","numeric","special"];
-  let charTypeSelection = [];
+  let charTypeSelection = "";
+  let chars = {
+    lowercase: "abcdefghijklmnopqrstuvwxyz",
+    uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+    numeric: "0123456789",
+    special: " !\"#$%&\'()*+,-./:;<=>?@[\\]^_\`{|}~"
+  }
+  let keys = Object.keys(chars);
   //Loop until user selects at least one character type
-  while(!validCharTypes){
-    charType.forEach(element => {
-      let include = confirm(`Would you like your password to include ${element} characters? Click 'OK' to include, 'Cancel' otherwise.`);
-      //If including character type, append it to array of selected types.
-      if(include){charTypeSelection.push(element)};
+  while(true){
+    let choices = [];
+    keys.forEach(element => {
+      let include = confirm(`Would you like to include ${element} characters in your password?\n ('OK' = Yes, 'Cancel' = No)`);
+      if(include){
+        choices.push(element);
+      }
     });
-    if(charTypeSelection.length !== 0){
-      //Return the array of selections
-      return charTypeSelection;
-    }
+    choices.forEach(element => {
+      charTypeSelection = charTypeSelection + chars[element];
+    });
+    if(charTypeSelection.length !== 0){return charTypeSelection;}
   }
 }
 
