@@ -48,7 +48,7 @@ function getPassLength(){
   } 
 }
 
-function getCharTypes(){
+function getChars(){
   let validCharTypes = false;
   let charType = ["lowercase","uppercase","numeric","special"];
   let charTypeSelection = [];
@@ -69,7 +69,7 @@ function getCharTypes(){
 function generatePassword(){
   let pass = "";
   let passwordLength = getPassLength();
-  let charTypes = getCharTypes();
+  let possibleChars = getChars();
 }
 
 /*  FUNCTION PLAN
